@@ -1,13 +1,26 @@
+import { Toaster } from "react-hot-toast";
+import { AppRoutes } from "./router/AppRoutes.jsx";
 
-import { AuthPage } from "../features/auth/pages/AuthPage.jsx";
- 
 function App() {
   return (
     <>
-      <h1> Hola Mundo</h1>
-      <AuthPage />
+      <Toaster
+        position="top-center"
+        toastOptions={{
+          style: {
+            fontFamily: "inherit",
+            fontWeight: 600,
+            fontSize: "1rem",
+            borderRadius: "8px",
+            background: "#4A3728",
+            color: "#FDF8F3",
+          }
+        }}
+      />
+
+      <AppRoutes />
     </>
-  )
+  );
 }
- 
+
 export default App;
