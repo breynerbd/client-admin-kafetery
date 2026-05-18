@@ -1,9 +1,19 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { LoginForm } from "../components/LoginForm.jsx";
 import { ForgotPasswordForm } from "../components/ForgotPasswordForm.jsx";
 
-export const AuthPage = () => {
+const AuthPage = () => {
     const [isForgot, setIsForgot] = useState(false);
+    const navigate = useNavigate();
+
+    // Redirección automática si el usuario ya inició sesión
+    useEffect(() => {
+        const token = localStorage.getItem("token"); // O tu store global de autenticación
+        if (token) {
+            navigate("/dashboard", { replace: true });
+        }
+    }, [navigate]);
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-[#FDF8F3] p-4">

@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { X, LayoutDashboard, Users, Store, BookOpen, Calendar, ShoppingBag, TicketPercent } from "lucide-react";
+import { X, LayoutDashboard, Users, Store, BookOpen, Calendar, ShoppingBag, TicketPercent, UtensilsCrossed } from "lucide-react";
 import imgLogo from "../../../assets/img/Kafetery_logo.png";
 
 export const Sidebar = ({ isOpen, onClose }) => {
@@ -11,15 +11,7 @@ export const Sidebar = ({ isOpen, onClose }) => {
     { id: "users", label: "Usuarios", icon: <Users size={20} /> },
     { id: "restaurants", label: "Restaurantes", icon: <Store size={20} /> },
     { id: "menus", label: "Menús", icon: <BookOpen size={20} /> },
-    {
-      id: "tables",
-      label: "Mesas",
-      icon: (
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 7V4a2 2 0 012-2h12a2 2 0 012 2v3m-16 0h16M4 7l2 11h12l2-11" />
-        </svg>
-      )
-    },
+    { id: "tables", label: "Mesas", icon: <UtensilsCrossed size={20} /> },
     { id: "reservations", label: "Reservas", icon: <Calendar size={20} /> },
     { id: "orders", label: "Órdenes", icon: <ShoppingBag size={20} /> },
     { id: "promotions", label: "Promociones", icon: <TicketPercent size={20} /> },

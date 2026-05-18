@@ -22,14 +22,14 @@ export const Orders = () => {
 
     const handleDelete = (orderId) => {
         showConfirmToast({
-            title: "¿Desactivar orden?",
-            message: "¿Estás seguro de que deseas desactivar esta orden?",
+            title: "¿Eliminar orden?",
+            message: "¿Estás seguro de que deseas eliminar esta orden?",
             onConfirm: async () => {
                 try {
                     await deactivateOrder(orderId);
-                    showSuccess("Orden desactivada exitosamente");
+                    showSuccess("Orden eliminada exitosamente");
                     await getOrders();
-                } catch (err) { showError("Error al desactivar"); }
+                } catch (err) { showError("Error al eliminar"); }
             }
         });
     };

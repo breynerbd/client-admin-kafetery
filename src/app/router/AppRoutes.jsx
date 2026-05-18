@@ -1,4 +1,5 @@
 import { Routes, Route, Navigate } from "react-router-dom";
+import { ProtectedRoute } from "./ProtectedRoute.jsx"; // <- Importamos la protección
 
 // Layouts y Páginas Base
 import AuthPage from "../../features/auth/pages/AuthPage.jsx";
@@ -39,40 +40,44 @@ export const AppRoutes = () => {
             {/* RUTA PÚBLICA: Login / Registro */}
             <Route path="/" element={<AuthPage />} />
 
-            {/* RUTAS PRIVADAS: Dashboard con Layout persistente */}
-            <Route path="/dashboard/*" element={<DashboardContainer />}>
+            {/* RUTAS PRIVADAS EN CAPSULADAS POR EL PROTECTEDROUTE */}
+            <Route element={<ProtectedRoute />}>
+                
+                <Route path="/dashboard/*" element={<DashboardContainer />}>
 
-                {/* 1. Vista principal (Resumen general) */}
-                <Route index element={<HomeDashboard />} />
+                    {/* 1. Vista principal (Resumen general) */}
+                    <Route index element={<HomeDashboard />} />
 
-                {/* 2. Sección de Menús */}
-                <Route path="menus" element={<Menus />} />
-                <Route path="menus/create" element={<MenuModal />} />
+                    {/* 2. Sección de Menús */}
+                    <Route path="menus" element={<Menus />} />
+                    <Route path="menus/create" element={<MenuModal />} />
 
-                {/* 3. Sección de Órdenes */}
-                <Route path="orders" element={<Orders />} />
-                <Route path="orders/create" element={<OrderModal />} />
+                    {/* 3. Sección de Órdenes */}
+                    <Route path="orders" element={<Orders />} />
+                    <Route path="orders/create" element={<OrderModal />} />
 
-                {/* 4. Sección de Promociones */}
-                <Route path="promotions" element={<Promotions />} />
-                <Route path="promotions/create" element={<PromotionModal />} />
+                    {/* 4. Sección de Promociones */}
+                    <Route path="promotions" element={<Promotions />} />
+                    <Route path="promotions/create" element={<PromotionModal />} />
 
-                {/* 5. Sección de Reservaciones */}
-                <Route path="reservations" element={<Reservations />} />
-                <Route path="reservations/create" element={<ReservationModal />} />
+                    {/* 5. Sección de Reservaciones */}
+                    <Route path="reservations" element={<Reservations />} />
+                    <Route path="reservations/create" element={<ReservationModal />} />
 
-                {/* 6. Sección de Restaurantes */}
-                <Route path="restaurants" element={<Restaurants />} />
-                <Route path="restaurants/create" element={<RestaurantModal />} />
+                    {/* 6. Sección de Restaurantes */}
+                    <Route path="restaurants" element={<Restaurants />} />
+                    <Route path="restaurants/create" element={<RestaurantModal />} />
 
-                {/* 7. Sección de Mesas */}
-                <Route path="tables" element={<Tables />} />
-                <Route path="tables/create" element={<TableModal />} />
+                    {/* 7. Sección de Mesas */}
+                    <Route path="tables" element={<Tables />} />
+                    <Route path="tables/create" element={<TableModal />} />
 
-                {/* 8. Sección de Usuarios / Staff */}
-                <Route path="users" element={<Users />} />
-                <Route path="users/create" element={<UserModal />} />
+                    {/* 8. Sección de Usuarios / Staff */}
+                    <Route path="users" element={<Users />} />
+                    <Route path="users/create" element={<UserModal />} />
 
+                </Route>
+                
             </Route>
 
             {/* MANEJO DE ERRORES: 404 o Redirección */}
